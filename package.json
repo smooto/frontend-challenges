@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "generate": "node scripts/generate.js"
   },
   "dependencies": {
     "next": "10.0.1",
