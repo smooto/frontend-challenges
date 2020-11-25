@@ -31,21 +31,21 @@ export default function neumorphicCalculator() {
         {/* TODO: number displays */}
       </div>
       <div className={styles.buttonsGrid}>
-        <button className={styles.clearButton}>clear</button>
-        <button>=</button>
-        <button>+</button>
+        <button className={`${styles.clearButton} ${styles.contrastButton}`}>clear</button>
+        <button className={styles.contrastButton}>=</button>
+        <button className={styles.contrastButton}>+</button>
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button>-</button>
+        <button className={styles.contrastButton}>-</button>
         <button>4</button>
         <button>5</button>
         <button>6</button>
-        <button>x</button>
+        <button className={styles.contrastButton}>x</button>
         <button>1</button>
         <button>2</button>
         <button>3</button>
-        <button>/</button>
+        <button className={styles.contrastButton}>/</button>
         {/* <button>0</button> */}
       </div>
     </div>
