@@ -1,0 +1,6 @@
+---
+  componentName: ExampleChallenge
+  componentPath: ../../lib/components/challenges/ExampleComponent.js
+  challengeTitle: Example Challenge
+  challengeDate: December 2020
+---
