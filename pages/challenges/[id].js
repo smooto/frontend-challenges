@@ -1,8 +1,9 @@
+import { getAllChallengeIds, getChallengeData } from '../../lib/challenges'
+import dynamic from 'next/dynamic'
+import path from 'path'
+
 import Head from 'next/head'
 import Post from '../../lib/components/meta/Post'
-import ExampleComponent from '../../lib/components/challenges/ExampleComponent'
-
-import { getAllChallengeIds, getChallengeData } from '../../lib/challenges'
 
 export async function getStaticProps({ params }) {
   const challengeData = getChallengeData(params.id)
@@ -22,12 +23,12 @@ export async function getStaticPaths() {
 }
 
 export default function PublishedPost({ challengeData }) {
-  // import ExampleComponent from `../../${challengeData.challengePath}`
+  const ChallengeComponent = dynamic(() => import(`../../lib/components/challenges/${challengeData.componentName}`))
 
   return (
     <div>
       {challengeData.challengeTitle}
-      <ExampleComponent />
+      <ChallengeComponent />
       {/* <Head>
         <title>challenge title</title>
       </Head>
