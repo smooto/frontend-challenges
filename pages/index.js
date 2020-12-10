@@ -1,7 +1,34 @@
+import { getAllChallengeIds, getChallengeData } from '../lib/challenges'
+
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export async function getStaticProps() {
+  const challengeIds = getAllChallengeIds()
+
+  const allChallengeData = challengeIds.map(challenge => {
+    const data = getChallengeData(challenge.params.id)
+
+    return {
+      id: data.componentName,
+      title: data.challengeTitle,
+      date: data.challengeDate
+    }
+  })
+
+  return {
+    props: {
+      allChallengeData
+    }
+  }
+}
+
+export default function Home({ allChallengeData }) {
+  // const allChallenges = challengeIds.map(challenge => challenge.params.id)
+
+  console.log(allChallengeData)
+
   return (
     <div className={styles.container}>
       <Head>
@@ -19,7 +46,15 @@ export default function Home() {
         </p>
 
         <ul>
-          <li>blog-style feed will go here, probably</li>
+          {
+            allChallengeData.map(({ id, title, date }) => (
+              <li key={id}>
+                <Link href={`/challenges/${id}`}>
+                  <a>{title}</a>
+                </Link>
+              </li>
+            ))
+          }
         </ul>
       </main>
 
